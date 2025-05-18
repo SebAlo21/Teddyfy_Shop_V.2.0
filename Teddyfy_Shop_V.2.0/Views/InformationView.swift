@@ -33,7 +33,7 @@ struct InformationView: View {
                     
                     
                     ZStack(){
-                        Image("user_I_osoNino2")
+                        Image("user_I_osoSentado")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 340)

@@ -70,18 +70,19 @@ struct InicioView: View {
                     Spacer()
                     
                     HStack(alignment: .bottom,spacing: 10){
-                        Image(systemName: "magnifyingglass")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20)
-                        Image(systemName: "bell")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20)
-                        
+                        Button(action:{},label:{
+                            Image(systemName: "magnifyingglass")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20)
+                        })
+                        Button(action:{},label:{
+                            Image(systemName: "bell")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20)
+                        })
                        
-                            
-                        
                     }
                 }.padding(.horizontal,30)
                 Rectangle()
