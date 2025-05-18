@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ducha-de-bebe.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

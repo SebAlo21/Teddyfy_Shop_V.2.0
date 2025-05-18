@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "oso_madera.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
