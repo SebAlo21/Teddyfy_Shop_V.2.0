@@ -32,10 +32,13 @@ struct CardView: View {
                             .foregroundStyle(Color("user_C_Pink"))
                         //.shadow(color:Color("user_C_Black").opacity(0.5), radius: 3,x:2,y:2)
                             .frame(width:154 ,height: 125)
-                        Image(imagenName)
+                        AsyncImage(url:URL(string:imagenName)){ image in
+                            image
+                                .image?
                             .resizable()
                             .scaledToFit()
                             .frame(width: 119,height: 116)
+                    }
                         HStack(){
                             RoundedRectangle(cornerRadius: 6)
                                 .foregroundStyle(Color("user_C_White").opacity(0.6))
@@ -107,5 +110,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(nombre: "Peluche navidad", imagenName: "user_I_ososinFondo", size: "L", precio: 22.00,ratio: 4.5)
+    CardView(nombre: "Peluche navidad", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png", size: "L", precio: 22.00,ratio: 4.5)
 }

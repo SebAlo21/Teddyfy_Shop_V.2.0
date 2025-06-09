@@ -33,10 +33,10 @@ struct InicioView: View {
     ]
     
     let listaInspiration:[Inspiration] = [
-        Inspiration(titulo: "Disfruta", subtitulo: "Recuerda Momentos Inolvidables", imagen: "user_I_osoAzul"),
-        Inspiration(titulo: "Vive", subtitulo: "Los momentos mas emocionantes", imagen: "user_I_osoMaleta"),
-        Inspiration(titulo:"Comparte", subtitulo:"Con los que mas quieres", imagen: "user_I_osoNino"),
-        Inspiration(titulo: "Aprende", subtitulo:"Lo bueno de la vida", imagen: "user_I_osoPanda")
+        Inspiration(titulo: "Disfruta", subtitulo: "Recuerda Momentos Inolvidables", imagen: "https://res.cloudinary.com/sasadev/image/upload/v1749353133/oso_primavera_lrqebp.jpg"),
+        Inspiration(titulo: "Vive", subtitulo: "Los momentos mas emocionantes", imagen: "https://res.cloudinary.com/sasadev/image/upload/v1749353132/oso_maleta_pmxept.jpg"),
+        Inspiration(titulo:"Comparte", subtitulo:"Con los que mas quieres", imagen: "https://res.cloudinary.com/sasadev/image/upload/v1749353132/oso_ni%C3%B1o_xoumka.jpg"),
+        Inspiration(titulo: "Aprende", subtitulo:"Lo bueno de la vida", imagen: "https://res.cloudinary.com/sasadev/image/upload/v1749353133/oso_panda_2_gypsmv.jpg")
     ]
     
 
@@ -203,9 +203,9 @@ struct InicioView: View {
                         }
                         
                         HStack(){
-                                CardView(nombre: "Oso Basico", imagenName: "user_I_ososinFondo", size:"L", precio: 35, ratio: 2.3)
+                                CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png", size:"L", precio: 35, ratio: 2.3)
                             Spacer()
-                                CardView(nombre: "Oso basico 2", imagenName: "user_I_ososinFondo", size: "L", precio: 25, ratio: 2.3)
+                                CardView(nombre: "Oso basico 2", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png", size: "L", precio: 25, ratio: 2.3)
                                 
                         }.padding(.horizontal,5)
                         

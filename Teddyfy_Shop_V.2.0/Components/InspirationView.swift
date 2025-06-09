@@ -19,11 +19,13 @@ struct InspirationView: View {
         },label:{
             VStack{
                 ZStack{
-                    Image(imagenName)
-                        .resizable()
+                    AsyncImage(url:URL(string:imagenName)){ image in
+                        image
+                        .image?.resizable()
                         .scaledToFill()
                         .clipped()
                         .opacity(0.7)
+                    }
                     Circle()
                         .fill(Color.clear)
                         .frame(width: 50)
@@ -77,5 +79,5 @@ struct InspirationView: View {
 }
 
 #Preview {
-    InspirationView(title: "titulo 1", subtitle: "Lorem impus sdoansd ", imagenName: "user_I_osoMaleta")
+    InspirationView(title: "titulo 1", subtitle: "Lorem impus sdoansd ", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749353133/oso_primavera_lrqebp.jpg")
 }
