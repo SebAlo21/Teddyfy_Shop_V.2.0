@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23788" systemVersion="24F74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="DBComplemento" representedClassName="DBComplemento" syncable="YES" codeGenerationType="class">
+        <attribute name="categoria_acc" optional="YES" attributeType="String"/>
+        <attribute name="color_acc" optional="YES" attributeType="String"/>
+        <attribute name="estado_acc" optional="YES" attributeType="String"/>
+        <attribute name="id_acc" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="nombre_acc" optional="YES" attributeType="String"/>
+        <attribute name="stock_acc" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="DBDetalle_pedido" representedClassName="DBDetalle_pedido" syncable="YES" codeGenerationType="class">
+        <attribute name="dedicatoria" optional="YES" attributeType="String"/>
+        <attribute name="destinatario" optional="YES" attributeType="String"/>
+        <attribute name="id_det_ped" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="precio_det_ped" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <relationship name="pedido" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBPedido" inverseName="detalle_pedidos" inverseEntity="DBPedido"/>
+    </entity>
+    <entity name="DBPedido" representedClassName="DBPedido" syncable="YES" codeGenerationType="class">
+        <attribute name="estado_pedido" optional="YES" attributeType="String"/>
+        <attribute name="fecha_pedido" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id_pedido" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="detalle_pedidos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBDetalle_pedido" inverseName="pedido" inverseEntity="DBDetalle_pedido"/>
+    </entity>
+    <entity name="DBPeluche" representedClassName="DBPeluche" syncable="YES" codeGenerationType="class">
+        <attribute name="categoria_pel" optional="YES" attributeType="String"/>
+        <attribute name="color_pel" optional="YES" attributeType="String"/>
+        <attribute name="estado_pel" optional="YES" attributeType="String"/>
+        <attribute name="id_pel" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="nombre_pel" optional="YES" attributeType="String"/>
+        <attribute name="stock_pel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tamano_pel" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="DBUsuario" representedClassName="DBUsuario" syncable="YES" codeGenerationType="class">
+        <attribute name="apellido_usuario" optional="YES" attributeType="String"/>
+        <attribute name="correo_usuario" optional="YES" attributeType="String"/>
+        <attribute name="direccion_usuario" optional="YES" attributeType="String"/>
+        <attribute name="estado_usuario" optional="YES" attributeType="String"/>
+        <attribute name="id_usuario" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="nombre_usuario" optional="YES" attributeType="String"/>
+        <attribute name="sexo_usuario" optional="YES" attributeType="String"/>
+        <attribute name="telefono_usuario" optional="YES" attributeType="String"/>
+    </entity>
+</model>
