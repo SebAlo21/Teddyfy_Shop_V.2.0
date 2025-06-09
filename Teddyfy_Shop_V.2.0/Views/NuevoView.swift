@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NuevoView: View {
+    //Sebastian
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
