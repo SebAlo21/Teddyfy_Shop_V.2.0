@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Accesorio:Identifiable{
-    let id = UUID()
+    let id : UUID = UUID()
     let imageName:String
     let nombre:String
 }
@@ -122,7 +122,7 @@ struct PersonalizarView: View {
                                     
                                     HStack(){
                                         
-                                        ForEach(itemsAccesorios) { item in
+                                        ForEach(itemsAccesorios){ item in
                                             
                                             VStack(){
                                                 
