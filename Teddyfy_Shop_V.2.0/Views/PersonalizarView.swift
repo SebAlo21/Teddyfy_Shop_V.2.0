@@ -168,17 +168,21 @@ struct PersonalizarView: View {
                                 
                                 
                                 // boton de añadir al carrito
-                                
-                                Label("Añadir al carrito", systemImage:"cart.badge.plus")
-                                
-                                    .bold()
-                                    .padding(.horizontal,90)
-                                    .padding(.vertical,30)
-                                    .background(Color("user_C_Orange"))
-                                    .foregroundStyle(.black)
-                                    .cornerRadius(15)
-                                
-                                    .navigationBarTitleDisplayMode(.inline)
+                                Button (action:{
+                                    //action de agregar al carrito
+                                },label:{
+                                    Label("Añadir al carrito", systemImage:"cart.badge.plus")
+                                    
+                                        .bold()
+                                        .padding(.horizontal,90)
+                                        .padding(.vertical,30)
+                                        .background(Color("user_C_Orange"))
+                                        .foregroundStyle(.black)
+                                        .cornerRadius(15)
+                                    
+                                        .navigationBarTitleDisplayMode(.inline)
+                                })
+                               
                                 
                                 
                             }

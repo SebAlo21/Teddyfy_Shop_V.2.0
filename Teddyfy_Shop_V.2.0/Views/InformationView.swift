@@ -33,10 +33,15 @@ struct InformationView: View {
                     
                     
                     ZStack(){
-                        Image("user_I_osoSentado")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 340)
+                        AsyncImage(url: URL(string: "https://res.cloudinary.com/sasadev/image/upload/v1749353133/oso_primavera_lrqebp.jpg"))
+                        {
+                           image in
+                            image
+                                .image?.resizable()
+                                .scaledToFit()
+                                .frame(width: 340)
+                        }
+                            
                         Image("icon_TeddyfyText")
                             .resizable()
                             .scaledToFit()
@@ -127,7 +132,7 @@ struct InformationView: View {
                     
                 }
                 
-                //Contacto
+               
                 
                
                 

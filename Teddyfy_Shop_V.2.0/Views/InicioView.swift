@@ -22,6 +22,7 @@ struct Inspiration:Identifiable{
 
 
 struct InicioView: View {
+    
     let listaEventos:[Eventos] = [
         Eventos(nombre: "San Valentin",imageName: "icon_valentin"),
         Eventos(nombre: "Cumpleaños",imageName: "icon_cumple"),
@@ -38,7 +39,7 @@ struct InicioView: View {
         Inspiration(titulo: "Aprende", subtitulo:"Lo bueno de la vida", imagen: "user_I_osoPanda")
     ]
     
-    
+
     @State private var mostrarInfoView:Bool = false
     @State private var mostrarTutorial:Bool = false
     
@@ -47,10 +48,12 @@ struct InicioView: View {
     var body: some View {
         
         ZStack{
-           
+           //Fondo
             LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
+            //Fin de Fondo
             VStack(){
+                //Barra superior de Logo
                 HStack(){
                     
                         Image("icon_TeddyfyText")
@@ -91,6 +94,7 @@ struct InicioView: View {
                     .opacity(0.5)
                     .padding(.horizontal,20)
                 
+                //Barra superior de Logo
                 ScrollView{
                    //Stack Tutorial
                     VStack(){
