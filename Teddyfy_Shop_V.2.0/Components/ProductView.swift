@@ -22,10 +22,13 @@ struct ProductView: View {
             .overlay{
                 HStack{
                     VStack{
-                        Image(imageName)
+                        AsyncImage(url:URL(string:imageName)){image in
+                            image
+                                .image?
                             .resizable()
                             .scaledToFit()
                             .frame(width:100,height: 100)
+                        }
                     }.padding(.horizontal,10)
                     VStack(alignment: .leading){
                         HStack{
@@ -66,5 +69,5 @@ struct ProductView: View {
 }
 
 #Preview {
-    ProductView(nombre: "Oso ", precio: 24.00, cantidad: 1, imageName: "user_I_ososinFondo")
+    ProductView(nombre: "Oso ", precio: 24.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png")
 }

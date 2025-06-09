@@ -19,9 +19,9 @@ struct Producto:Identifiable{
 struct CarritoView: View {
     @State private var codigo:String = ""
     let listaProducto:[Producto] = [
-        Producto(nombre: "Oso 1", precio: 22.00, cantidad: 1, imageName: "user_I_ososinFondo"),
-        Producto(nombre: "Oso 2", precio: 30.00, cantidad: 1, imageName: "user_I_osoVaquero"),
-        Producto(nombre: "Oso 3", precio: 12.00, cantidad: 1, imageName: "user_I_osoMadera"),
+        Producto(nombre: "Oso 1", precio: 22.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png"),
+        Producto(nombre: "Oso 2", precio: 30.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749352506/oso_nieve_yl9zxm.jpg"),
+        Producto(nombre: "Oso 3", precio: 12.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749352506/oso_madera_hjmufk.jpg"),
         
     ]
     let columns = [
