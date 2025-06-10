@@ -9,7 +9,10 @@ import SwiftUI
 
 struct InformationView: View {
     let test = ""
-    let textTest:String = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    let textTest:String = "Hola"
+    let textMision:String = "ho"
+    let textVision:String = "hol"
+    let textValores:String = "hola"
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -79,7 +82,7 @@ struct InformationView: View {
                                 .foregroundStyle(.userCOrange)
                             Spacer()
                         }
-                        Text(textTest)
+                        Text(textMision)
                             .multilineTextAlignment(.leading)
                         
                     }
@@ -98,7 +101,7 @@ struct InformationView: View {
                                 .foregroundStyle(.userCOrange)
                             Spacer()
                         }
-                        Text(textTest)
+                        Text(textVision)
                             .multilineTextAlignment(.leading)
                         
                         
@@ -120,7 +123,7 @@ struct InformationView: View {
                                 .foregroundStyle(.userCOrange)
                             Spacer()
                         }
-                        Text(textTest)
+                        Text(textValores)
                             .multilineTextAlignment(.leading)
                         
                         
