@@ -40,7 +40,7 @@ struct TabBarView: View {
           
         }
         
-        .accentColor(Color("user_C_Black"))
+        .accentColor(Color("user_C_Orange"))
         
                     
             

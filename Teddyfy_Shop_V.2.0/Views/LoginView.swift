@@ -25,32 +25,25 @@ struct LoginView: View {
                 VStack(){
                     VStack(alignment:.center){
                         Text("Iniciar Sesion")
-                            .font(.system(size: 40))
-                            .fontWeight(.black)
+                            .title1Black()
                         Text("Lorem Ipsum is simply dummy text ")
-                            .foregroundStyle(Color(.gray).opacity(0.9))
+                            .subtitleGray()
                     }.padding(.horizontal)
                     
                     VStack(spacing:20){
                         TextField("Ingrese su correo",text: $email)
-                        //.textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                            .background(Color("user_C_White"))
-                            .cornerRadius(16)
-                        
+                            .textFielBasic()
+                            
                         SecureField("Ingrese su contraseña",text: $password)
-                            .padding()
-                            .background(Color("user_C_White"))
-                            .cornerRadius(16)
+                            .secureFieldBasic()
                     }
                     .padding(.horizontal,50)
                     .padding(.vertical,40)
                     Button(action:{
                         mostrarInicioView.toggle()
                     },label:{
-                        RoundedRectangle(cornerRadius: 16)
-                            .frame(width: 300,height: 60)
-                            .foregroundStyle(Color("user_C_Black"))
+                        Rectangle()
+                            .rectangleButtonBlack()
                             .overlay{
                                 Text("Ingresar")
                                     .font(.title)
@@ -63,28 +56,32 @@ struct LoginView: View {
                     Spacer()
                     
                     HStack(spacing:20){
-                        RoundedRectangle(cornerRadius: 16)
-                            .frame(width: 60,height: 60)
-                            .foregroundStyle(Color("user_C_White"))
-                            .overlay{
-                                Image("icon_apple")
-                                    .resizable().scaledToFit()
-                                    .frame(width: 40)
-                            }
+                        Button(action:{
+                            //logueo con appleID
+                        },label:{
+                            Rectangle()
+                                .rectangleLogoWhite()
+                                .overlay{
+                                    Image("icon_apple")
+                                        .resizable().scaledToFit()
+                                        .frame(width: 40)
+                                }
+                        })
+                       
+                        Button(action:{},label:{
+                            Rectangle()
+                                .rectangleLogoWhite()
+                                .overlay{
+                                    Image("icon_Colorgoogle")
+                                        .resizable().scaledToFit()
+                                        .frame(width: 40)
+                                }
+                        })
                         
-                        RoundedRectangle(cornerRadius: 16)
-                            .frame(width: 60,height: 60)
-                            .foregroundStyle(Color("user_C_White"))
-                        
-                            .overlay{
-                                Image("icon_Colorgoogle")
-                                    .resizable().scaledToFit()
-                                    .frame(width: 40)
-                            }
                     }.padding(.bottom,10)
                     
                     NavigationLink(destination:RegisterView()){
-                        Text("Nuevo en Teddyfy? Registrate")
+                        Text("Nuevo en Teddyfy? REGISTRATE")
                             .foregroundStyle(Color.black)
                             .font(.system(size: 13))
                             .bold()
