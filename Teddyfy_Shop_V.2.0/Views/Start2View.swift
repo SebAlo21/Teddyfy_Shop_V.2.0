@@ -75,27 +75,23 @@ struct Start2View: View {
                         RoundedRectangle(cornerRadius: 48)
                             .foregroundStyle(Color("user_C_Pink"))
                             .frame(width:350,height: 100)
-                            .shadow(color:Color(.black),radius: 1,x:3,y:3)
+                            .shadow(color:Color(.gray),radius: 1,x:1,y:1)
                         ZStack(){
                             Text("Comienza ahora...")
                                 .padding(.leading,60)
                                 .bold()
                                 .font(.title2)
                                 .foregroundStyle(Color("user_C_Black"))
-
                             Circle()
                                 .foregroundStyle(Color("user_C_Orange"))
                                 .frame(width:90)
                                 .overlay(content: {
-                                    Image(systemName: "arrowshape.right")
+                                    Image(systemName: "arrowshape.right.fill")
                                         .renderingMode(.template)
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width:50)
                                         .foregroundStyle(Color("user_C_Black"))
-                                        
-                                        
-                                        
                                 })
                                 .padding(.trailing,250)
                           

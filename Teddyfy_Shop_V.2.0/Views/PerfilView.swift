@@ -34,14 +34,11 @@ struct PerfilView: View {
                 //Titulo
                 HStack(){
                     Text("Mi Perfil")
-                        .bold()
-                        .font(.title)
+                        .title1Black()
                     Spacer()
                 }
-                
                 //Icono principal de perfil
                 VStack{
-                    
                     RoundedRectangle(cornerRadius: 18)
                         .frame(width: 350,height: 120)
                         .foregroundStyle(Color("user_C_Pink"))
@@ -52,34 +49,27 @@ struct PerfilView: View {
                                     .frame(width: 90,height: 90)
                                     .overlay{
                                         Image(systemName: "person")
-                                            .resizable()
-                                            .scaledToFit()
+                                            .imageBasic()
                                             .frame(width:50)
-                                        
                                     }
                                 Spacer()
                                 VStack(alignment: .leading){
                                     Text("Nombre")
-                                        .bold()
-                                        .font(.title3)
+                                        .title3Black()
                                     Text("ejemplo@gmail.com")
                                         .bold()
-                                        
                                 }
                                 Spacer()
                                 Button(action:{},label:{
                                     Image(systemName: "pencil")
                                         .renderingMode(.template)
-                                        .resizable()
-                                        .scaledToFit()
+                                        .imageBasic()
                                         .frame(width:20)
                                         .foregroundStyle(Color("user_C_Black"))
                                 })
-                              
                             }
                             .padding()
                         }
-                    
                 }
                 //Botones adicionales
                 VStack{
@@ -91,19 +81,13 @@ struct PerfilView: View {
                             .overlay{
                                 HStack{
                                     Image(systemName: boton.icon)
-                                    
                                     Text(boton.text)
                                     Spacer()
                                 }
                                 .padding(.horizontal,20)
                             }
-                        
                     }
-                    
-                    
-                    
                 }
-                
                 Spacer()
                     .frame(maxHeight:60)
                 
@@ -113,20 +97,14 @@ struct PerfilView: View {
                 },label:{
                     HStack(alignment: .center){
                         Image(systemName: "door.left.hand.open")
-                            .resizable()
-                            .scaledToFit()
+                            .imageBasic()
                             .frame(width: 30)
-                        
                         Text("Cerrar Sesion")
                             .bold()
                             .font(.title2)
-                        
                     }
                     .foregroundStyle(Color("user_C_Black"))
-                    
                 })
-               
-                
             }
             .padding(.horizontal,30)
         }

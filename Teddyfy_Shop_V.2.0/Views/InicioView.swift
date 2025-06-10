@@ -57,8 +57,7 @@ struct InicioView: View {
                 HStack(){
                     
                         Image("icon_TeddyfyText")
-                            .resizable()
-                            .scaledToFit()
+                        .imageBasic()
                             .frame(width: 120)
                             .contextMenu(ContextMenu(menuItems: {
                                 Button(action:{
@@ -75,15 +74,11 @@ struct InicioView: View {
                     HStack(alignment: .bottom,spacing: 10){
                         Button(action:{},label:{
                             Image(systemName: "magnifyingglass")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20)
-                        })
+                                .imageIconBlack()
+                                                    })
                         Button(action:{},label:{
                             Image(systemName: "bell")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20)
+                                .imageIconBlack()
                         })
                        
                     }
@@ -95,13 +90,13 @@ struct InicioView: View {
                     .padding(.horizontal,20)
                 
                 //Barra superior de Logo
+                Spacer()
+                    .frame(maxHeight:20)
                 ScrollView{
                    //Stack Tutorial
                     VStack(){
                         Text("Tutorial de pesonalización")
-                            .font(.system(size: 22))
-                            .bold()
-                            .foregroundStyle(Color("user_C_Black"))
+                            .title4Black()
                             .padding(.trailing,100)
                         
                         Button(action:{
@@ -115,10 +110,7 @@ struct InicioView: View {
                                 .overlay(content: {
                                     HStack(){
                                         Image(systemName:"figure.wave")
-                                            .renderingMode(.template)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .foregroundStyle(Color("user_C_Orange"))
+                                            .imageIconOrange()
                                             .frame(width:30)
                                         
                                         VStack(alignment:.leading){
@@ -131,10 +123,7 @@ struct InicioView: View {
                                         
                                         Spacer()
                                         Image(systemName: "play.fill")
-                                            .renderingMode(.template)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .foregroundStyle(Color("user_C_Orange"))
+                                            .imageIconOrange()
                                             .frame(width:30)
                                         
                                     }.padding(.horizontal,40)
@@ -144,13 +133,12 @@ struct InicioView: View {
                         
                     }
                     //Stack Fin Tutorial
-                    
+                    Spacer()
+                        .frame(minHeight:20)
                     //Stack List Eventos
                     VStack(alignment:.leading){
                         Text("Eventos")
-                            .font(.system(size: 20))
-                            .bold()
-                            .foregroundStyle(Color("user_C_Black"))
+                            .title4Black()
                         ScrollView(.horizontal){
                             LazyHGrid(rows:rows,spacing:20){
                                 ForEach(listaEventos){ evento in
@@ -161,36 +149,31 @@ struct InicioView: View {
                                             .overlay{
                                                 HStack{
                                                     Image(evento.imageName)
-                                                        .resizable()
-                                                        .scaledToFit()
+                                                        .imageBasic()
                                                         .frame(width:30)
                                                     Text(evento.nombre)
                                                         .foregroundStyle(Color("user_C_White"))
                                                         .bold()
-                                                    
                                                 }
                                                 .padding(5)
                                             }
                                     })
-                                    
-                                    
                                 }
                             }
                         }
-                        
                     }
                     .padding(.horizontal,15)
                     .padding(.top,5)
                     
                     //Stack Fin List Eventos
-                    
+                    Spacer()
+                        .frame(minHeight:20)
                     //Stack Nuevos
                     VStack(alignment: .leading){
                         HStack(){
                             Text("Nuevos ingresos")
-                                .font(.system(size: 22))
-                                .bold()
-                                .foregroundStyle(Color("user_C_Black"))
+                                .title4Black()
+                                
                             Spacer()
                             Button(action:{
                                 //redireccion a NuevosView
@@ -199,27 +182,18 @@ struct InicioView: View {
                                     .bold()
                                     .foregroundStyle(.blue)
                             })
-                            
                         }
-                        
                         HStack(){
                                 CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png", size:"L", precio: 35, ratio: 2.3)
                             Spacer()
                                 CardView(nombre: "Oso basico 2", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png", size: "L", precio: 25, ratio: 2.3)
-                                
                         }.padding(.horizontal,5)
-                        
-                        
                     }.padding(.horizontal,15)
                     //Stack Fin Nuevos
-                    
-                    
                     //Stack Inspiarte
                     VStack(alignment: .leading){
                         Text("Inspirate")
-                            .font(.system(size: 22))
-                            .bold()
-                            .foregroundStyle(Color("user_C_Black"))
+                            .title4Black()
                         ScrollView(.horizontal){
                             LazyHGrid(rows:rows){
                                 ForEach(listaInspiration){
@@ -228,19 +202,12 @@ struct InicioView: View {
                                 }
                             }
                         }
-                        
-                        
-                       
                     }.padding(.horizontal,15)
                         .padding(.top,5)
-                    
-                    
                     //Stack Fin Inspirate
-                    
                 }
                 .padding(.horizontal,10)
             }
-            
         }
         .sheet(isPresented: $mostrarInfoView, content: {InformationView()})
         .sheet(isPresented: $mostrarTutorial, content: {TutorialView()})

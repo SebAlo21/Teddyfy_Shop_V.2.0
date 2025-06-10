@@ -12,13 +12,9 @@ struct SplashView: View {
     @State private var mostrarSheet:Bool = false
     var body: some View {
         ZStack{
-            //Color("user_C_Orange")
-               // .edgesIgnoringSafeArea(.all)
-           // LinearGradient(gradient: Gradient(colors: [.userCPink,.userCPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
-              //  .edgesIgnoringSafeArea(.all)
+           
             LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
-            
             
             RoundedRectangle(cornerRadius: 28)
                 .frame(width: 160,height: 160)

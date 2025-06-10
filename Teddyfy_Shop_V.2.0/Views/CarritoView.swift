@@ -14,9 +14,10 @@ struct Producto:Identifiable{
     let cantidad:Int
     let imageName:String
 }
-
-
 struct CarritoView: View {
+    @State var envio:Double = 0
+    @State var descuento:Double = 0
+    @State var subtotal:Double = 0
     @State private var codigo:String = ""
     let listaProducto:[Producto] = [
         Producto(nombre: "Oso 1", precio: 22.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png"),
@@ -35,8 +36,7 @@ struct CarritoView: View {
                 //titulo
                 HStack(){
                     Text("Carrito")
-                        .bold()
-                        .font(.title)
+                        .title1Black()
                     Spacer()
                     
                 }
@@ -54,8 +54,7 @@ struct CarritoView: View {
                 //Detalles de compra
                 VStack(alignment: .leading){
                     Text("CODIGO PROMOCIONAL")
-                        .bold()
-                        .font(.headline)
+                        .title4Black()
                     RoundedRectangle(cornerRadius: .infinity)
                         .stroke(Color.black,lineWidth: 2)
                         .fill(Color.white)
@@ -63,20 +62,16 @@ struct CarritoView: View {
                         .overlay{
                             HStack{
                                 TextField("Ingrese su codigo...",text: $codigo)
-                                //.textFieldStyle(RoundedBorderTextFieldStyle())
-                                    
                                     .background(Color("user_C_White"))
                                     .frame(width:280,height: 30)
                                 Image(systemName: "checkmark.seal")
                                     .renderingMode(.template)
-                                    .resizable()
-                                    .scaledToFit()
+                                    .imageBasic()
                                     .frame(width:20)
                                     .foregroundStyle(.green)
                             }
                             .padding(.horizontal,10)
                         }
-                    
                 }
                 VStack{
                     //Envio
@@ -84,21 +79,21 @@ struct CarritoView: View {
                         Text("Envio")
                             .bold()
                         Spacer()
-                        Text("0.00")
+                        Text("S/ \(String(format:"%.2f",envio))")
                     }
                     //Descuento
                     HStack{
                         Text("Descuento")
                             .bold()
                         Spacer()
-                        Text("0.00")
+                        Text("S/ \(String(format:"%.2f",descuento))")
                     }
                     //Subtotal
                     HStack{
                         Text("Subtotal")
                             .bold()
                         Spacer()
-                        Text("0.00")
+                        Text("S/ \(String(format:"%.2f",subtotal))")
                     }
                 }
                 .padding(.horizontal,20)
@@ -108,19 +103,23 @@ struct CarritoView: View {
                 
                 //Boton de Compra
                 HStack(alignment:.center){
-                    RoundedRectangle(cornerRadius: .infinity)
-                        .frame(width: 300,height: 40)
-                        .foregroundStyle(Color("user_C_Orange2"))
-                        .overlay{
-                            HStack{
-                                Text("COMPRAR")
-                                    .bold()
-                                Text("(\(listaProducto.count))")
-                                    .bold()
+                    Button(action:{
+                        //comprar
+                    },label:{
+                        Rectangle()
+                            .rectangleButtonOrange()
+                            .overlay{
+                                HStack{
+                                    Text("COMPRAR")
+                                        .bold()
+                                    Text("(\(listaProducto.count))")
+                                        .bold()
+                                }
+                                .foregroundStyle(Color(.white))
                             }
-                            .foregroundStyle(Color(.white))
-                        }
-                }
+                    })
+                   
+                }.padding(.horizontal,20)
                 
                 
                 

@@ -19,24 +19,19 @@ struct RegisterView: View {
             VStack(){
                 VStack(alignment:.center){
                     Text("Registrarse")
-                        .font(.system(size: 40))
-                        .fontWeight(.black)
+                        .title1Black()
                     Text("Lorem Ipsum is simply dummy text ")
-                        .foregroundStyle(Color(.gray).opacity(0.9))
+                        .subtitleGray()
                 }.padding(.horizontal)
                 
                 
                 VStack(spacing:20){
                     TextField("Ingrese su correo",text: $email)
                         //.textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                        .background(Color("user_C_White"))
-                        .cornerRadius(16)
+                        .textFielBasic()
                 
                     SecureField("Ingrese su contraseña",text: $password)
-                        .padding()
-                        .background(Color("user_C_White"))
-                        .cornerRadius(16)
+                        .secureFieldBasic()
                 }
                 .padding(.horizontal,50)
                 .padding(.vertical,40)
@@ -45,9 +40,8 @@ struct RegisterView: View {
                 Button(action:{
                     mostrarInicioView.toggle()
                 },label:{
-                    RoundedRectangle(cornerRadius: 16)
-                        .frame(width: 300,height: 60)
-                        .foregroundStyle(Color("user_C_Black"))
+                    Rectangle()
+                        .rectangleButtonBlack()
                         .overlay{
                             Text("Registrar")
                                 .font(.title)
