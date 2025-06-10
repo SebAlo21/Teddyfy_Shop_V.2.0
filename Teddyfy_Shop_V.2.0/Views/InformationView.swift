@@ -9,10 +9,15 @@ import SwiftUI
 
 struct InformationView: View {
     let test = ""
-    let textTest:String = "Hola"
-    let textMision:String = "ho"
-    let textVision:String = "hol"
-    let textValores:String = "hola"
+    let textTest:String = "Teddyfy es una empresa dedicada a crear peluches únicos y personalizados que capturan los sentimientos y la imaginación de nuestros clientes. Deesde personajes diseñados por los usuarios hasta recreaciones de mascotas o recuerdos especiales, nuestros peluches son piezas hechas con amor, detalle y creatividad."
+    let textMision:String = "Crear peluches personalizados de alta calidad que reflejen los sentimiento, historias y sueños de nuestros clientes, combinandotecnología, diseño artesanal y atención al detalle para entregar productos que conmueven y acompañen toda la vida."
+    let textVision:String = "Ser la marca Líder en peluches personalizados en latinoamérica y el mundo, inspirando momentos de felicidad, nostalgia y amor en cada creación."
+    let textValores:String = "Creatividad: impulsamos la imaginación en cada peluche que fabricamos."
+    let textValores1:String = "Calidad: Nos comprometemos con los mejores materiales y procesos."
+    let textValores2:String = "Empatía: Escuchamos y entendemo las emociones detrás de cada pedido."
+    let textValores3:String = "Innovación: Utilizamos tecnología de punta para personalizar de manera única."
+    let textValores4:String = "Compromiso: Cada peluche es fabricado con dedicación y responsabilidad."
+    
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -124,6 +129,14 @@ struct InformationView: View {
                             Spacer()
                         }
                         Text(textValores)
+                            .multilineTextAlignment(.leading)
+                        Text(textValores1)
+                            .multilineTextAlignment(.leading)
+                        Text(textValores2)
+                            .multilineTextAlignment(.leading)
+                        Text(textValores3)
+                            .multilineTextAlignment(.leading)
+                        Text(textValores4)
                             .multilineTextAlignment(.leading)
                         
                         
