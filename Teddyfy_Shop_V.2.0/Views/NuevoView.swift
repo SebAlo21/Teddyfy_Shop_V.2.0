@@ -10,7 +10,7 @@ import SwiftUI
 struct NuevoView: View {
     let columns = [
         GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible()),
     ]
     var body: some View {
         ZStack {
@@ -20,7 +20,7 @@ struct NuevoView: View {
             
                     VStack(alignment: .leading) {
                         // Título
-                        Text("NUEVO")
+                        Text("CATALOGO")
                             .font(.title)
                             .bold()
                             .padding(.horizontal)
@@ -46,20 +46,12 @@ struct NuevoView: View {
                         // Grid de imágenes
                         ScrollView {
                             LazyVGrid(columns: columns, spacing: 20) {
-                                ForEach(0..<6) { _ in
-                                    ZStack(){
-                                        Rectangle()
-                                            .fill(Color.white.opacity(0.8))
-                                            .frame(width:165,height:188)
-                                            .cornerRadius(10)
-                                            .shadow(color:Color("user_C_Black").opacity(0.3),radius:1,x:2,y:2)
-                                        
-                                        Image(systemName: "photo")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width:100)
-                                    }
-                                }
+                                    CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/fl_preserve_transparency/v1749446588/nuevo_TBrow_zpfcsq.jpg?_s=public-apps", size:"L", precio: 35, ratio: 2.3)
+                                    CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/fl_preserve_transparency/v1749446588/nuevo_Tlove_cnzx4m.jpg?_s=public-apps", size:"L", precio: 35, ratio: 2.3)
+                                    CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/fl_preserve_transparency/v1749446589/nuevo_TPardo_durbx1.jpg?_s=public-apps", size:"L", precio: 35, ratio: 2.3)
+                                    CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/fl_preserve_transparency/v1749446586/nuevo_EPink_lq9kie.jpg?_s=public-apps", size:"L", precio: 35, ratio: 2.3)
+                                    CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/fl_preserve_transparency/v1749446587/nuevo_Snoopy_trn0mv.jpg?_s=public-apps", size:"L", precio: 35, ratio: 2.3)
+                                    CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/fl_preserve_transparency/v1749446586/nuevo_Freddy_dchovi.jpg?_s=public-apps", size:"L", precio: 35, ratio: 2.3)
                             }
                             .padding()
 
@@ -68,7 +60,7 @@ struct NuevoView: View {
                                 Text("*")
                                     .font(.title)
                                     .bold()
-                                Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,")
+                                Text("Se agregaran mas productos con la implementacion de la Base de Datos")
                                     .font(.footnote)
                                     .foregroundColor(.black)
                             }
@@ -83,3 +75,4 @@ struct NuevoView: View {
 #Preview {
     NuevoView()
 }
+
