@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//test
 struct Producto:Identifiable{
     let id = UUID()
     let nombre:String
