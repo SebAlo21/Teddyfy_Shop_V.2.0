@@ -140,9 +140,7 @@ struct CarritoView: View {
             .padding(.horizontal,30)
         }
         .onAppear{
-            usuario = usuarioViewModel.obtenerUsuario(usuarioActual,moc)
-            
-            carrito = usuario?.toCarrito
+           
         }
     }
 }

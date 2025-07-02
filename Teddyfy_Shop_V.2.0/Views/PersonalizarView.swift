@@ -38,7 +38,7 @@ struct PersonalizarView: View {
     @AppStorage("usuarioActual") var usuarioActual:String = ""
     
     @State var usuario: DBUsuario? = nil
-
+    
     
     var body: some View {
         NavigationStack(){
@@ -223,7 +223,7 @@ struct PersonalizarView: View {
                         Button (action:{
                             
                             isNavigationActive = true
-                            itemCarritoViewModel.post((usuario?.toCarrito)!,producto.nombre,producto.categoria,producto.descripcion,producto.precioBase,producto.imagenURL,color,mensaje,talla,1,moc)
+                            itemCarritoViewModel.post(usuario?.toCarrito ,producto.nombre,producto.categoria,producto.descripcion,producto.precioBase,producto.imagenURL,color,mensaje,talla,1,moc)
                             //action de agregar al carrito
                         },label:{
                             Label("Añadir al carrito", systemImage:"cart.badge.plus")
@@ -247,6 +247,7 @@ struct PersonalizarView: View {
                 }
             }.onAppear{
                usuario = usuarioViewModel.obtenerUsuario(usuarioActual, moc)
+                
             }
         }
     }
