@@ -6,15 +6,21 @@
 //
 
 import SwiftUI
+import CoreData
+
 struct Boton:Identifiable{
     let id = UUID()
     let text:String
     let icon:String
 }
-
-
-
 struct PerfilView: View {
+    
+    @Environment(\.managedObjectContext) var moc
+    @StateObject var usuarioViewModel = UsuarioViewModel.shared
+    @AppStorage("usuarioActual") var usuarioActual:String = ""
+    
+    @State var usuario: DBUsuario? = nil
+    
     let listaBotones:[Boton] = [
         Boton(text: "Mis ordenes", icon: "list.clipboard"),
         Boton(text: "Devoluciones", icon: "return"),
@@ -54,9 +60,9 @@ struct PerfilView: View {
                                     }
                                 Spacer()
                                 VStack(alignment: .leading){
-                                    Text("Nombre")
+                                    Text(usuario?.nombre ?? "Sin Nombre")
                                         .title3Black()
-                                    Text("ejemplo@gmail.com")
+                                    Text(usuario?.correo ?? "Sin Correo")
                                         .bold()
                                 }
                                 Spacer()
@@ -106,6 +112,9 @@ struct PerfilView: View {
                     .foregroundStyle(Color("user_C_Black"))
                 })
             }
+            .onAppear {
+                usuario = usuarioViewModel.obtenerUsuario(usuarioActual, moc)
+            }
             .padding(.horizontal,30)
         }
         .fullScreenCover(isPresented: $cerrarSesion, content: {
@@ -113,7 +122,6 @@ struct PerfilView: View {
         })
     }
 }
+    
 
-#Preview {
-    PerfilView()
-}
+

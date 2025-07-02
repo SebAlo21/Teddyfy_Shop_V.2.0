@@ -14,11 +14,24 @@ struct Producto:Identifiable{
     let cantidad:Int
     let imageName:String
 }
+
 struct CarritoView: View {
+    @StateObject var viewModel = ProductoViewModel()
+    
+    
+    @Environment(\.managedObjectContext) var moc
+    @StateObject var usuarioViewModel = UsuarioViewModel.shared
+    @StateObject var carritoViewModel = CarritoViewModel.shared
+    @State var usuario : DBUsuario? = nil
+    @State var carrito : DBCarrito? = nil
+    
+    
     @State var envio:Double = 0
     @State var descuento:Double = 0
     @State var subtotal:Double = 0
     @State private var codigo:String = ""
+    @AppStorage("usuarioActual") var usuarioActual:String = ""
+    
     let listaProducto:[Producto] = [
         Producto(nombre: "Oso 1", precio: 22.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png"),
         Producto(nombre: "Oso 2", precio: 30.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749352506/oso_nieve_yl9zxm.jpg"),
@@ -125,6 +138,11 @@ struct CarritoView: View {
                 
             }
             .padding(.horizontal,30)
+        }
+        .onAppear{
+            usuario = usuarioViewModel.obtenerUsuario(usuarioActual,moc)
+            
+            carrito = usuario?.toCarrito
         }
     }
 }

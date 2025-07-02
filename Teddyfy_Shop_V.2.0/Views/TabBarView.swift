@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
+    
     var body: some View {
         TabView{
             InicioView()
@@ -20,11 +22,11 @@ struct TabBarView: View {
                     Image(systemName: "flame.fill")
                     Text("Nuevos")
                 }
-            PersonalizarView()
-                .tabItem{
-                    Image(systemName: "wand.and.rays")
-                    Text("Personalizar")
-                }
+            //PersonalizarView()
+                //.tabItem{
+                    //Image(systemName: "wand.and.rays")
+                  //  Text("Personalizar")
+                //}
             CarritoView()
                 .tabItem{
                     Image(systemName: "bag.fill")
@@ -47,6 +49,6 @@ struct TabBarView: View {
     }
 }
 
-#Preview {
-    TabBarView()
-}
+//#Preview {
+  //  TabBarView()
+//}

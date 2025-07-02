@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Teddyfy_Shop_V_2_0App: App {
+    @StateObject var usuarioViewModel = UsuarioViewModel.shared
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
+                .environment(\.managedObjectContext,usuarioViewModel.container.viewContext)
         }
     }
 }

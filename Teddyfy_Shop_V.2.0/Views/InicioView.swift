@@ -183,11 +183,11 @@ struct InicioView: View {
                                     .foregroundStyle(.blue)
                             })
                         }
-                        HStack(){
-                                CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png", size:"L", precio: 35, ratio: 2.3)
-                            Spacer()
-                                CardView(nombre: "Oso basico 2", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png", size: "L", precio: 25, ratio: 2.3)
-                        }.padding(.horizontal,5)
+//                        HStack(){
+//                                CardView(nombre: "Oso Basico", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png", size:"L", precio: 35, ratio: 2.3)
+//                            Spacer()
+//                                CardView(nombre: "Oso basico 2", imagenName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png", size: "L", precio: 25, ratio: 2.3)
+//                        }.padding(.horizontal,5)
                     }.padding(.horizontal,15)
                     //Stack Fin Nuevos
                     //Stack Inspiarte

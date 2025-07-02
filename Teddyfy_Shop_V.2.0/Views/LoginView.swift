@@ -6,15 +6,21 @@
 //
 
 import SwiftUI
+import CoreData
 
 
 struct LoginView: View {
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) var moc
+    @StateObject var usuarioViewModel = UsuarioViewModel.shared
     
     @State private var email:String = ""
     @State private var password:String = ""
     
     @State private var mostrarInicioView:Bool = false
     @State private var mostrarRegisterView:Bool = false
+    
+    @AppStorage("usuarioActual") var usuarioActual:String = ""
     
     var body: some View {
         NavigationView{
@@ -40,7 +46,8 @@ struct LoginView: View {
                     .padding(.horizontal,50)
                     .padding(.vertical,40)
                     Button(action:{
-                        mostrarInicioView.toggle()
+                        mostrarInicioView = usuarioViewModel.login(email,password,moc)
+                        usuarioActual = email
                     },label:{
                         Rectangle()
                             .rectangleButtonBlack()
@@ -51,13 +58,12 @@ struct LoginView: View {
                                     .foregroundStyle(.white)
                             }
                     })
-                    
-                    
                     Spacer()
                     
                     HStack(spacing:20){
                         Button(action:{
-                            //logueo con appleID
+                            
+                            
                         },label:{
                             Rectangle()
                                 .rectangleLogoWhite()

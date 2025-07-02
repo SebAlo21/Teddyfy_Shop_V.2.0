@@ -6,11 +6,20 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct RegisterView: View {
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) var moc
+    @StateObject var usuarioViewModel = UsuarioViewModel.shared
     @State private var email:String = ""
     @State private var password:String = ""
+    @State private var nombre :String = ""
+    @State private var direccion:String = ""
+    @State private var telefono:String = ""
     @State private var mostrarInicioView:Bool = false
+    @AppStorage("usuarioActual") var usuarioActual:String = ""
+    
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -29,6 +38,18 @@ struct RegisterView: View {
                     TextField("Ingrese su correo",text: $email)
                         //.textFieldStyle(RoundedBorderTextFieldStyle())
                         .textFielBasic()
+                    
+                    TextField("Ingrese su nombre",text: $nombre)
+                        //.textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textFielBasic()
+                    
+                    TextField("Ingrese su direccion",text: $direccion)
+                        //.textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textFielBasic()
+                    
+                    TextField("Ingrese su telefono",text: $telefono)
+                        //.textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textFielBasic()
                 
                     SecureField("Ingrese su contraseña",text: $password)
                         .secureFieldBasic()
@@ -38,7 +59,14 @@ struct RegisterView: View {
                 
                 
                 Button(action:{
-                    mostrarInicioView.toggle()
+                    if usuarioViewModel.registrar(email,moc){
+                        usuarioViewModel.post(email,password, nombre, direccion, telefono, moc)
+                        usuarioActual = email
+                        
+                        mostrarInicioView.toggle()
+                    } else {
+                        mostrarInicioView = false
+                    }
                 },label:{
                     Rectangle()
                         .rectangleButtonBlack()
@@ -82,6 +110,10 @@ struct RegisterView: View {
         .fullScreenCover(isPresented: $mostrarInicioView, content: {TabBarView()})
     }
 }
+
+
+
+
 
 #Preview {
     RegisterView()

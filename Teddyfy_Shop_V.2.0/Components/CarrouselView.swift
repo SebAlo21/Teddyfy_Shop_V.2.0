@@ -2,6 +2,7 @@ import SwiftUI
 
 // Componente que representa el carrusel de imágenes
 struct CarrouselView: View {
+    
     // Lista de URLs de las imágenes
     let imageURLs: [String] = [
         "https://res.cloudinary.com/sasadev/image/upload/fl_preserve_transparency/v1749446586/nuevo_EPink_lq9kie.jpg?_s=public-apps",
@@ -23,7 +24,7 @@ struct CarrouselView: View {
                     .foregroundStyle(Color("user_C_Pink"))
                     .frame(width: 300, height: 300) // Ajusta el tamaño
                     .overlay {
-                        AsyncImage(url: URL(string: imageURLs[currentIndex])) { image in
+                        AsyncImage(url: URL(string:imageURLs[currentIndex])) { image in
                             image
                                 .resizable()
                                 .scaledToFit()
@@ -35,6 +36,7 @@ struct CarrouselView: View {
                         .frame(width: 250, height: 250)
                         .padding()
                     }
+                    
                     .padding(5) // Padding exterior opcional
                 
             }
