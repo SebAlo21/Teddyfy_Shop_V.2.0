@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+
 struct Producto:Identifiable{
     let id = UUID()
     let nombre:String
@@ -24,7 +25,7 @@ struct CarritoView: View {
     @StateObject var usuarioViewModel = UsuarioViewModel.shared
     @StateObject var carritoViewModel = CarritoViewModel.shared
     
-    @State var carrito : DBCarrito? = nil
+    @State private var items:[DBItemCarrito] = []
     
     @State var envio:Double = 0
     @State var descuento:Double = 0
@@ -58,7 +59,7 @@ struct CarritoView: View {
                     VStack{
                         LazyVGrid(columns: columns){
                             
-                            ForEach(carrito?.itemCarritoArray ?? []){itemcarrito in
+                            ForEach(items){itemcarrito in
                                 
                                  ProductView(nombre: itemcarrito.toProducto?.nombre ?? "", precio: itemcarrito.toProducto?.precioBase ?? 0.0, cantidad:Int( itemcarrito.cantidad), imageName: itemcarrito.toProducto?.imagenURL ?? "")
                                 
@@ -151,8 +152,18 @@ struct CarritoView: View {
         }
         
         .onAppear {
-            carrito = usuarioViewModel.obtenerCarritoDeUsuario(usuarioActual, moc)
+            cargarData(usuarioActual)
             
+        }
+    }
+    
+    
+    
+    
+    func cargarData(_ usuarioActual:String){
+       if let carrito = usuarioViewModel.obtenerCarritoDeUsuario(usuarioActual, moc)
+        {
+            self.items =  carrito.itemCarritoArray
         }
     }
 }

@@ -17,6 +17,7 @@ struct PersonalizarView: View {
     let producto : ProductoModel
     var viewModel = ProductAPIViewModel()
     
+    //@State var itemcarrito :DBItemCarrito
     
     @State private var isNavigationActive = false
     
@@ -35,6 +36,7 @@ struct PersonalizarView: View {
     @StateObject var itemCarritoViewModel = ItemCarritoViewModel.shared
     @StateObject var carritoViewModel = ItemCarritoViewModel.shared
     @StateObject var usuarioViewModel = UsuarioViewModel.shared
+    //@State var carrito:DBCarrito
     @AppStorage("usuarioActual") var usuarioActual:String = ""
     
     @State var usuario: DBUsuario? = nil
@@ -222,8 +224,12 @@ struct PersonalizarView: View {
                         // boton de añadir al carrito
                         Button (action:{
                             
-                            
-                            itemCarritoViewModel.post(usuario?.toCarrito ,producto.nombre,producto.categoria,producto.descripcion,producto.precioBase,producto.imagenURL,color,mensaje,talla,1,moc)
+                            if let itemcarrito = itemCarritoViewModel.post(usuario?.toCarrito ,producto.nombre,producto.categoria,producto.descripcion,producto.precioBase,producto.imagenURL,color,mensaje,talla,1,moc){
+                                if let carrito = usuarioViewModel.obtenerCarritoDeUsuario(usuarioActual, moc){
+                                    carrito.addToToItemCarrito(itemcarrito)
+                                }
+                            }
+                           
                             //action de agregar al carrito
                             isNavigationActive = true
                         },label:{

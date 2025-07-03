@@ -34,7 +34,7 @@ class ItemCarritoViewModel:ObservableObject{
     
     //Func post -> Creacion de Item Carrito
     
-    func post(_ carrito:DBCarrito?,_ nombrePro:String,_ categoriaPro:String,_ descripcionPro: String,_ precioBasePro:Float,_ imagenURLPro:String,_ colorPers:String,_ mensajePers:String,_ tallaPers:String,_ cantidadItem:Int16,_ context: NSManagedObjectContext){
+    func post(_ carrito:DBCarrito?,_ nombrePro:String,_ categoriaPro:String,_ descripcionPro: String,_ precioBasePro:Float,_ imagenURLPro:String,_ colorPers:String,_ mensajePers:String,_ tallaPers:String,_ cantidadItem:Int16,_ context: NSManagedObjectContext)->DBItemCarrito?{
         
         //creaction de producto
         let producto = DBProducto(context: context)
@@ -72,6 +72,7 @@ class ItemCarritoViewModel:ObservableObject{
         
         print("Item Carrito creado")
         save(context: context)
+        return itemCarrito
     }
     
     
