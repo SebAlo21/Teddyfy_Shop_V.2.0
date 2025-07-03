@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct Teddyfy_Shop_V_2_0App: App {
     @StateObject var usuarioViewModel = UsuarioViewModel.shared
+    @StateObject var itemCarritoViewModel = ItemCarritoViewModel.shared
     var body: some Scene {
         WindowGroup {
             SplashView()

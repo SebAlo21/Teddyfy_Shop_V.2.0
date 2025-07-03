@@ -70,8 +70,8 @@ class ItemCarritoViewModel:ObservableObject{
         personalizacion.toItemCarrito = itemCarrito
         
         
+        print("Item Carrito creado")
         save(context: context)
-        
     }
     
     

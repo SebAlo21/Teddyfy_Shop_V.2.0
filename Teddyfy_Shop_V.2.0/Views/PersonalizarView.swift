@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import CoreData
 struct Accesorio:Identifiable{
     let id : UUID = UUID()
     let imageName:String
@@ -222,9 +222,10 @@ struct PersonalizarView: View {
                         // boton de añadir al carrito
                         Button (action:{
                             
-                            isNavigationActive = true
+                            
                             itemCarritoViewModel.post(usuario?.toCarrito ,producto.nombre,producto.categoria,producto.descripcion,producto.precioBase,producto.imagenURL,color,mensaje,talla,1,moc)
                             //action de agregar al carrito
+                            isNavigationActive = true
                         },label:{
                             Label("Añadir al carrito", systemImage:"cart.badge.plus")
                             
@@ -243,7 +244,7 @@ struct PersonalizarView: View {
                     
                 }
                 .navigationDestination(isPresented: $isNavigationActive) {
-                    CarritoView()
+                    NuevoView()
                 }
             }.onAppear{
                usuario = usuarioViewModel.obtenerUsuario(usuarioActual, moc)

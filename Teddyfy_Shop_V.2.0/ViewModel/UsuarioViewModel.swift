@@ -129,6 +129,15 @@ class UsuarioViewModel: ObservableObject{
         }
     }
     
+    func obtenerCarritoDeUsuario(_ correo: String, _ context: NSManagedObjectContext) -> DBCarrito? {
+        if let usuario = obtenerUsuario(correo, context) {
+            return usuario.toCarrito
+        } else {
+            return nil
+        }
+    }
+
+    
     
     // validar y registrar
     func registrar(_ correo:String,_ context:NSManagedObjectContext)-> Bool{
@@ -147,7 +156,7 @@ class UsuarioViewModel: ObservableObject{
         }
     }
     
-    
+   
     
     
     //Encriptacion de clave

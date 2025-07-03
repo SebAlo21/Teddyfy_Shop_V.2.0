@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24F74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="DBCarrito" representedClassName="DBCarrito" syncable="YES" codeGenerationType="class">
+    <entity name="DBCarrito" representedClassName="DBCarrito" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="precioTotal" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="toItemCarrito" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBItemCarrito" inverseName="toCarrito" inverseEntity="DBItemCarrito"/>
         <relationship name="toUsuario" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBUsuario" inverseName="toCarrito" inverseEntity="DBUsuario"/>
     </entity>
-    <entity name="DBItemCarrito" representedClassName="DBItemCarrito" syncable="YES" codeGenerationType="class">
+    <entity name="DBItemCarrito" representedClassName="DBItemCarrito" syncable="YES">
         <attribute name="cantidad" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="fechaAgregado" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
