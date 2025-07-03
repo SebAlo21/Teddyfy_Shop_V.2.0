@@ -15,15 +15,18 @@ struct Producto:Identifiable{
     let imageName:String
 }
 
+
+
 struct CarritoView: View {
-    @StateObject var viewModel = ProductoViewModel()
-    
     
     @Environment(\.managedObjectContext) var moc
     @StateObject var usuarioViewModel = UsuarioViewModel.shared
     @StateObject var carritoViewModel = CarritoViewModel.shared
+    
     @State var usuario : DBUsuario? = nil
     @State var carrito : DBCarrito? = nil
+    @State  var items : [DBItemCarrito] = []
+    
     
     
     @State var envio:Double = 0
@@ -58,9 +61,16 @@ struct CarritoView: View {
                 ScrollView{
                     VStack{
                         LazyVGrid(columns: columns){
-                            ForEach(listaProducto){ producto in
-                                ProductView(nombre: producto.nombre, precio: producto.precio, cantidad: producto.cantidad, imageName: producto.imageName)
+                            
+                            ForEach(items){itemcarrito in
+                                ProductView(nombre: itemcarrito.toProducto?.nombre ?? "", precio: itemcarrito.toProducto?.precioBase ?? 0.0, cantidad:Int( itemcarrito.cantidad), imageName: itemcarrito.toProducto?.imagenURL ?? "")
+                                
                             }
+                            
+                            
+//                            ForEach(listaProducto){ producto in
+//                                ProductView(nombre: producto.nombre, precio: producto.precio, cantidad: producto.cantidad, imageName: producto.imageName)
+//                            }
                         }
                     }
                 }
@@ -138,12 +148,14 @@ struct CarritoView: View {
                 
             }
             .padding(.horizontal,30)
+        }.onAppear {
+            usuario = usuarioViewModel.obtenerUsuario(usuarioActual, moc)
+            carrito = usuario?.toCarrito
+            if let setItems = carrito?.toItemCarrito as? Set<DBItemCarrito> {
+                items = Array(setItems)
+            }
         }
-        .onAppear{
-           
         }
     }
-}
-#Preview {
-    CarritoView()
-}
+
+

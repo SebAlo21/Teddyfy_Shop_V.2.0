@@ -11,7 +11,7 @@ import SwiftUI
 struct ProductView: View {
     
     let nombre:String
-    let precio:Double
+    let precio:Float
     let cantidad:Int
     let imageName:String
     

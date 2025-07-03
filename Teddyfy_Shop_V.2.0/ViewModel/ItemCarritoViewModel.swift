@@ -60,8 +60,9 @@ class ItemCarritoViewModel:ObservableObject{
         
         itemCarrito.toPersonalizacion = personalizacion
         itemCarrito.toProducto = producto
-        
-        carrito?.toItemCarrito = NSSet(object: itemCarrito)
+        carrito?.addToToItemCarrito(itemCarrito)
+        itemCarrito.toCarrito = carrito
+        //carrito?.toItemCarrito = (NSSet(object: itemCarrito))
         //relacion producto - itemproducto
         producto.toItemCarrito = NSSet(object:itemCarrito)
         
