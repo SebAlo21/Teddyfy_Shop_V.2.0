@@ -7,19 +7,20 @@
 
 import SwiftUI
 
-struct TextItem:Identifiable{
+struct StartItem:Identifiable{
     let id = UUID()
     let titulo:String
     let parrafo:String
+    let imagen:String
 }
 
 
 struct Start2View: View {
     @State private var mostarLoginView:Bool = false
-    let items: [TextItem] = [
-        TextItem(titulo:"Bienvenido ...", parrafo: "Descubre cómo dar vida a un peluche hecho a tu medida. Elige, personaliza y crea un compañero tan especial como tú.")
-        ,TextItem(titulo: "Tú diseñas...", parrafo: "Elige entre cientos de ombinaciones, añade tu nombre , colores favoritos o dedicatorias. Creamos codad peluche con amor y detalle.")
-        ,TextItem(titulo: "Regala...", parrafo: "Ideal para cumpleaños , aniversarios o cualquier ocasión especial. Personaliza tu regalo y hazlo inolvidable.")
+    let items: [StartItem] = [
+        StartItem(titulo:"Bienvenido ...", parrafo: "Descubre cómo dar vida a un peluche hecho a tu medida. Elige, personaliza y crea un compañero tan especial como tú.",imagen: "https://res.cloudinary.com/sasadev/image/upload/v1752119131/osocarrosel1BG_qabadd.png")
+        ,StartItem(titulo: "Tú diseñas...", parrafo: "Elige entre cientos de ombinaciones, añade tu nombre , colores favoritos o dedicatorias. Creamos codad peluche con amor y detalle.",imagen: "https://res.cloudinary.com/sasadev/image/upload/v1752119271/osocarrosel2BG_mcwosp.png")
+        ,StartItem(titulo: "Regala...", parrafo: "Ideal para cumpleaños , aniversarios o cualquier ocasión especial. Personaliza tu regalo y hazlo inolvidable.",imagen: "https://res.cloudinary.com/sasadev/image/upload/v1752119278/osocarrosel3BG_vd4xcr.png")
     ]
     
     
@@ -28,38 +29,60 @@ struct Start2View: View {
             
             LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
+            Circle()
+                .frame(height: 350)
+                .foregroundStyle(Color("user_C_Pink"))
+                .padding(.bottom,200)
+            
+            HStack(){
+                Button(action:{},label:{
+                    RoundedRectangle(cornerRadius: 32)
+                        .foregroundStyle(Color("user_C_White"))
+                        .frame(width: 100,height: 50)
+                        .overlay(content: {
+                            Text("atras")
+                        })
+                })
+                Spacer()
+                Button(action:{},label:{
+                    RoundedRectangle(cornerRadius: 32)
+                        .foregroundStyle(Color("user_C_White"))
+                        .frame(width: 100,height: 50)
+                        .overlay(content: {
+                            Text("saltar")
+                        })
+                })
+            }
+            .padding()
+            .padding(.bottom,720)
+            
+            
             
             VStack(){
-                ZStack{
-                    RoundedRectangle(cornerRadius: 28)
-                        .frame(width:190,height: 190)
-                        .foregroundStyle(Color("user_C_Black"))
-                        //.shadow(color:.black,radius: 5,x:3,y:3)
-                    Image("user_I_logoMain")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width:250 ,height:250)
-                        
-                }
-                    .padding(.top,100)
-                
                 TabView{
                     ForEach(items){
                         item in
-                        VStack(alignment:.leading){
-                            Text(item.titulo)
-                                .font(.system(size: 40))
-                                .foregroundStyle(Color("user_C_Black"))
-                                .bold()
-                                .padding(.bottom,5)
-                            Text(item.parrafo)
+                        VStack{
+                            AsyncImage(url: URL(string: item.imagen)){
+                                image in
+                                image .image?.resizable()
+                                    .scaledToFit()
+                                    .frame(width:320)
+                            }
+                            VStack(alignment:.center){
+                                Text(item.titulo)
+                                    .font(.system(size: 40))
+                                    .foregroundStyle(Color("user_C_Black"))
+                                    .bold()
+                                    .padding(.bottom,5)
+                                Text(item.parrafo)
+                            }
+                            .padding()
+                            .frame(width:350,height:200)
                         }
-                        .padding()
-                        .frame(width:350,height:400)
-                        
                     }
                 }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                
+                    .padding(.top,100)
                 
                 //Text
                 

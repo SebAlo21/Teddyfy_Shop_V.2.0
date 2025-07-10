@@ -12,9 +12,12 @@ struct SplashView: View {
     @State private var mostrarSheet:Bool = false
     var body: some View {
         ZStack{
-           
-            LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            Image("splashback")
                 .edgesIgnoringSafeArea(.all)
+                .scaledToFill()
+            
+//            LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//                .edgesIgnoringSafeArea(.all)
             
             RoundedRectangle(cornerRadius: 28)
                 .frame(width: 160,height: 160)
@@ -22,7 +25,7 @@ struct SplashView: View {
                 .shadow(radius: 20)
                 
             Button(action:{
-                mostarStartView.toggle()
+              mostarStartView.toggle()
             },label:{
                 Image("user_I_logoMain")
                     .resizable()
