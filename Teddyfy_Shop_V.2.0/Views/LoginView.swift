@@ -26,7 +26,7 @@ struct LoginView: View {
         NavigationView{
             ZStack{
                 
-                LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(gradient: Gradient(colors: [.userCWhite,.userCOrange,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .edgesIgnoringSafeArea(.all)
                 
                 HStack{
