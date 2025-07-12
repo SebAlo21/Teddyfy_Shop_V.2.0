@@ -39,43 +39,32 @@ struct PerfilView: View {
             VStack(){
                 //Titulo
                 HStack(){
-                    Text("Mi Perfil")
+                    Text("MI PERFIL")
                         .title1Black()
                     Spacer()
                 }
                 //Icono principal de perfil
                 VStack{
-                    RoundedRectangle(cornerRadius: 18)
-                        .frame(width: 350,height: 120)
-                        .foregroundStyle(Color("user_C_Pink"))
-                        .overlay{
-                            HStack{
-                                RoundedRectangle(cornerRadius: 18)
-                                    .foregroundStyle(Color("user_C_Orange"))
-                                    .frame(width: 90,height: 90)
-                                    .overlay{
-                                        Image(systemName: "person")
-                                            .imageBasic()
-                                            .frame(width:50)
-                                    }
-                                Spacer()
-                                VStack(alignment: .leading){
-                                    Text(usuario?.nombre ?? "Sin Nombre")
-                                        .title3Black()
-                                    Text(usuario?.correo ?? "Sin Correo")
-                                        .bold()
-                                }
-                                Spacer()
-                                Button(action:{},label:{
-                                    Image(systemName: "pencil")
-                                        .renderingMode(.template)
-                                        .imageBasic()
-                                        .frame(width:20)
-                                        .foregroundStyle(Color("user_C_Black"))
-                                })
-                            }
-                            .padding()
+                    VStack{
+                        Circle()
+                            .frame(width:150)
+                            .foregroundColor(.userCPink)
+                            .shadow(radius: 1,x:1,y:1)
+                            .overlay(content: {
+                                Image(systemName:("person"))
+                                    .imageBasic()
+                                    .frame(width: 70)
+                            })
+                        VStack(alignment: .center){
+                            Text(usuario?.nombre ?? "Sin nombre")
+                                .title3Black()
+                            Text(usuario?.correo ?? "Sin Correo")
+                                .bold()
                         }
+                        
+                        
+                    }
+                    
                 }
                 //Botones adicionales
                 VStack{

@@ -27,23 +27,32 @@ struct RegisterView: View {
             ScrollView{
                 ZStack{
                     HStack{
-                        VStack{
-                            Text("Titulo")
-                            Text("Subtitulo")
+                        ZStack{
+                        VStack(alignment:.leading){
+                            Text("ÚNETE!")
+                                .font(.system(size: 50))
+                                .bold()
+                                .foregroundColor(.userCBlack)
+                            Text("¿Nuevo por aqui?")
+                                .foregroundColor(.brown)
                         }
+                        .frame(width: 200)
+                        .padding(.trailing,180)
                         AsyncImage(url: URL(string: "https://res.cloudinary.com/sasadev/image/upload/v1752119334/osoregistro_jjurji.png")){
                             image in
                             image.image?.resizable()
                                 .scaledToFit()
-                                .frame(height:250)
+                                .frame(height:280)
                         }
+                        .padding(.leading,150)
+                    }
                     }
                     .padding(.bottom,800)
                     //Form
                     HStack{
                         RoundedRectangle(cornerRadius: 48)
                             .foregroundStyle(Color("user_C_White"))
-                            .frame(width: 420,height: 800)
+                            .frame(width: 420,height: 770)
                             .overlay{
                                 VStack(alignment: .center){
                                     Text("Registrarme")
@@ -116,9 +125,7 @@ struct RegisterView: View {
                                     
                                 }
                                 .padding(.bottom,5)
-                                .padding(.top,0)
                             }
-                        
                     }
                     .padding(.top,200)
                 }

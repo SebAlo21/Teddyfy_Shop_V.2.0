@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
-
+import CoreData
 
 struct ProductView: View {
+    @Environment(\.managedObjectContext) var moc
+    @StateObject var carritoViewModel = CarritoViewModel.shared
     
     let nombre:String
     let precio:Float
@@ -35,7 +37,9 @@ struct ProductView: View {
                             Text(nombre)
                                 .bold()
                             Spacer()
-                            Button(action:{},label:{
+                            Button(action:{}
+                                
+                            ,label:{
                                 Image(systemName: "trash")
                                     .renderingMode(.template)
                                     .foregroundStyle(Color("user_C_Orange2"))
@@ -69,5 +73,5 @@ struct ProductView: View {
 }
 
 #Preview {
-    ProductView(nombre: "Oso ", precio: 24.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png")
+    ProductView(nombre: "Oso ", precio: 24.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png" )
 }

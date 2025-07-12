@@ -30,17 +30,25 @@ struct LoginView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 HStack{
-                    VStack{
-                        Text("Titulo")
-                        Text("Subtitulo")
+                    ZStack{
+                    VStack(alignment:.leading){
+                        Text("HOLA!")
+                            .font(.system(size: 50))
+                            .bold()
+                            .foregroundColor(.userCBlack)
+                        Text("Bienvenido a la fabrica de recuerdos")
+                            .foregroundColor(.brown)
                     }
+                    .frame(width: 200)
+                    .padding(.trailing,150)
                     AsyncImage(url: URL(string: "https://res.cloudinary.com/sasadev/image/upload/v1752119312/ososaludologin_qsjajh.png")){
                         image in
                         image.image?.resizable()
                             .scaledToFit()
-                            .frame(height:300)
+                            .frame(height:280)
                     }
-                    
+                    .padding(.leading,130)
+                }
                 }.padding(.bottom,500)
                 
                 HStack{

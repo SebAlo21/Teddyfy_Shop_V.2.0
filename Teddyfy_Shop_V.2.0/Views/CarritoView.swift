@@ -8,52 +8,45 @@
 import SwiftUI
 import CoreData
 
-struct Producto:Identifiable{
-    let id = UUID()
-    let nombre:String
-    let precio:Double
-    let cantidad:Int
-    let imageName:String
-}
-
 
 
 struct CarritoView: View {
     @Environment(\.managedObjectContext) var moc
     @AppStorage("usuarioActual") var usuarioActual:String = ""
-
+    
     @StateObject var usuarioViewModel = UsuarioViewModel.shared
-    @StateObject var carritoViewModel = CarritoViewModel.shared
+  
+    
+    @State private var refrescar:Bool = false
     
     @State private var items:[DBItemCarrito] = []
+    
+    @State private var carritoActual:DBCarrito?
     
     @State var envio:Double = 0
     @State var descuento:Double = 0
     @State var subtotal:Double = 0
     @State private var codigo:String = ""
     
-    let listaProducto:[Producto] = [
-        Producto(nombre: "Oso 1", precio: 22.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png"),
-        Producto(nombre: "Oso 2", precio: 30.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749352506/oso_nieve_yl9zxm.jpg"),
-        Producto(nombre: "Oso 3", precio: 12.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749352506/oso_madera_hjmufk.jpg"),
-        
-    ]
+   
+    
     let columns = [
         GridItem(.flexible())
     ]
+    
     var body: some View {
-        ZStack(alignment:.topLeading){
+        ZStack(){
             LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
-            VStack(alignment:.leading){
+            VStack(){
                 //titulo
                 HStack(){
-                    Text("Carrito")
+                    Text("CARRITO")
                         .title1Black()
                     Spacer()
-                    
                 }
-                
+                .padding(.horizontal,50)
+                Divider()
                 //Lista de Producto
                 ScrollView{
                     VStack{
@@ -61,19 +54,19 @@ struct CarritoView: View {
                             
                             ForEach(items){itemcarrito in
                                 
-                                 ProductView(nombre: itemcarrito.toProducto?.nombre ?? "", precio: itemcarrito.toProducto?.precioBase ?? 0.0, cantidad:Int( itemcarrito.cantidad), imageName: itemcarrito.toProducto?.imagenURL ?? "")
-                                
+                                ProductView(nombre: itemcarrito.toProducto?.nombre ?? "", precio: itemcarrito.toProducto?.precioBase ?? 0.0, cantidad:Int( itemcarrito.cantidad), imageName: itemcarrito.toProducto?.imagenURL ?? "").contextMenu(ContextMenu(menuItems: {
+                                    Button(action:{
+                                        carritoActual?.removeFromToItemCarrito(itemcarrito)
+                                        cargarData(usuarioActual)
+                                    },label:{Label("Eliminar",systemImage:"trash")})
+                                }))
                             }
-                            
-                            //                            ForEach(listaProducto){ producto in
-                            //                                ProductView(nombre: producto.nombre, precio: producto.precio, cantidad: producto.cantidad, imageName: producto.imageName)
-                            //                            }
-                            
                         }
                         
                         
                         
                     }
+                    Divider()
                     //Detalles de compra
                     VStack(alignment: .leading){
                         Text("CODIGO PROMOCIONAL")
@@ -135,7 +128,7 @@ struct CarritoView: View {
                                     HStack{
                                         Text("COMPRAR")
                                             .bold()
-                                        Text("(\(listaProducto.count))")
+                                        Text("(\(items.count))")
                                             .bold()
                                     }
                                     .foregroundStyle(Color(.white))
@@ -148,22 +141,24 @@ struct CarritoView: View {
                     
                 }
                 .padding(.horizontal,30)
+                
             }
-        }
-        
-        .onAppear {
-            cargarData(usuarioActual)
+            .onAppear {
+                cargarData(usuarioActual)
+              
+            }
             
         }
     }
-    
-    
-    
-    
-    func cargarData(_ usuarioActual:String){
-       if let carrito = usuarioViewModel.obtenerCarritoDeUsuario(usuarioActual, moc)
-        {
-            self.items =  carrito.itemCarritoArray
+        
+        func cargarData(_ usuarioActual:String){
+            if let carrito = usuarioViewModel.obtenerCarritoDeUsuario(usuarioActual, moc)
+            {
+                self.carritoActual = carrito
+                self.items =  carrito.itemCarritoArray
+                
+            }
         }
+        
     }
-}
+

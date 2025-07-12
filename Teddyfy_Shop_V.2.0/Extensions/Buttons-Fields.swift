@@ -11,7 +11,7 @@ import SwiftUI
 extension TextField{
     func textFielBasic() -> some View{
         self.padding()
-            .background(Color("user_C_White"))
+            .background(Color.white)
             .cornerRadius(32)
             .shadow(color: .gray, radius: 2,x:1,y:3)
     }

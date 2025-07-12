@@ -45,16 +45,16 @@ struct PersonalizarView: View {
     var body: some View {
         NavigationStack(){
             ZStack(){
-                LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(gradient: Gradient(colors: [.userCWhite,.userCPink,.userCOrange]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .edgesIgnoringSafeArea(.all)
                 
                 ScrollView{
                     VStack(){ //contenedor img
                         VStack(alignment:.leading){
-                            Text("Personalización")
+                            Text("PERSONALIZAR")
                                 .font(.title)
                                 .bold()
-                                .padding(.trailing,150)
+                                
                         }
                         
                         VStack () {

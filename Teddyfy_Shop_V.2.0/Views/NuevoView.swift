@@ -17,34 +17,63 @@ struct NuevoView: View {
     var body: some View {
         NavigationStack(){
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(gradient: Gradient(colors: [.userCWhite,.userCPink,.userCOrange]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .edgesIgnoringSafeArea(.all)
                 
+               
+                
                 VStack(alignment: .leading) {
-                    // Título
-                    Text("CATALOGO")
-                        .font(.title)
-                        .bold()
-                        .padding(.horizontal)
-                    
-                    // Barra de búsqueda e iconos
-                    HStack {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                            TextField("Buscar...", text: .constant(""))
-                        }
-                        .padding(10)
-                        .background(Color.white)
-                        .cornerRadius(10)
+                    RoundedRectangle(cornerRadius: 32)
+                        .fill(Color("user_C_Black"))
+                        .frame(width: 402, height: 200)
+                        .overlay(content: {
+                            VStack(alignment: .leading){
+                                Text("CATALOGO")
+                                    .font(.title)
+                                    .bold()
+                                    .foregroundColor(.userCWhite)
+                                HStack{
+                                    RoundedRectangle(cornerRadius: 32)
+                                        .foregroundStyle(Color("user_C_White"))
+                                        .frame(width: 353, height: 50)
+                                        .overlay(content: {
+                                            
+                                               
+                                                ZStack{
+                                                    RoundedRectangle(cornerRadius: 32)
+                                                        .foregroundStyle(Color("user_C_Black"))
+                                                        .frame(width:350)
+                                                        .padding(.vertical,1)
+                                                    HStack{
+                                                        HStack{
+                                                            Image(systemName: "magnifyingglass")
+                                                                .renderingMode(.template)
+                                                                .foregroundStyle(Color.gray)
+                                                            Text("BUSCAR")
+                                                                .foregroundStyle(Color.gray)
+                                                        }
+                                                        Spacer()
+                                                        RoundedRectangle(cornerRadius: 32)
+                                                            .foregroundColor(Color.userCOrange)
+                                                            .frame(width:100,height: 48)
+                                                            .overlay(content:{
+                                                                Image(systemName:"line.3.horizontal.decrease")
+                                                                    .renderingMode(.template)
+                                                                    .foregroundStyle(Color.white)
+                                                                
+                                                            })
+                                                    }
+                                                }
+                                                .padding(.horizontal,10)
+                                            
+                                        })
+                                    
+                                }
+                                
+                            }
+                            
+                        })
                         
-                        Spacer()
-                        
-                        Image(systemName: "bell")
-                            .font(.title2)
-                            .foregroundColor(.black)
-                    }
-                    .padding(.horizontal)
-                    
                     // Grid de imágenes
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 20){
@@ -65,18 +94,19 @@ struct NuevoView: View {
                         }
                         
                         
-                        HStack(alignment: .top) {
+                        HStack{
                             Text("*")
                                 .font(.title)
                                 .bold()
+                                .foregroundColor(.gray)
                             Text("Productos consumidos desde Teddyfy API")
                                 .font(.footnote)
-                                .foregroundColor(.black)
+                                .foregroundColor(.gray)
                         }
                         .padding(.horizontal)
                         .padding(.bottom)
                     }
-                }
+                }.edgesIgnoringSafeArea(.all)
             }
         }
     }

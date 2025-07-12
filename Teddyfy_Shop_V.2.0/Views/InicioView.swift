@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Eventos:Identifiable{
+struct Eventos2:Identifiable{
     let id = UUID()
     let nombre:String
     let imageName:String
@@ -23,13 +23,13 @@ struct Inspiration:Identifiable{
 
 struct InicioView: View {
     
-    let listaEventos:[Eventos] = [
-        Eventos(nombre: "San Valentin",imageName: "icon_valentin"),
-        Eventos(nombre: "Cumpleaños",imageName: "icon_cumple"),
-        Eventos(nombre: "Navidad",imageName: "icon_navidad"),
-        Eventos(nombre: "Baby Shower",imageName: "icon_baby"),
-        Eventos(nombre: "Hallowen",imageName: "icon_hallowen"),
-        Eventos(nombre: "Dia de la Madre",imageName: "icon_madre")
+    let listaEventos:[Eventos2] = [
+        Eventos2(nombre: "San Valentin",imageName: "icon_valentin"),
+        Eventos2(nombre: "Cumpleaños",imageName: "icon_cumple"),
+        Eventos2(nombre: "Navidad",imageName: "icon_navidad"),
+        Eventos2(nombre: "Baby Shower",imageName: "icon_baby"),
+        Eventos2(nombre: "Hallowen",imageName: "icon_hallowen"),
+        Eventos2(nombre: "Dia de la Madre",imageName: "icon_madre")
     ]
     
     let listaInspiration:[Inspiration] = [

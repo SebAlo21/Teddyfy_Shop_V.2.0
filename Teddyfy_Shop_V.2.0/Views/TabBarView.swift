@@ -12,40 +12,28 @@ struct TabBarView: View {
     
     var body: some View {
         TabView{
-            InicioView()
+            Menu2View()
                 .tabItem{
                     Image(systemName: "house.fill")
-                    Text("Inicio")
+                    Text("INICIO")
                 }
             NuevoView()
                 .tabItem{
                     Image(systemName: "flame.fill")
-                    Text("Nuevos")
+                    Text("CATALOGO")
                 }
-            //PersonalizarView()
-                //.tabItem{
-                    //Image(systemName: "wand.and.rays")
-                  //  Text("Personalizar")
-                //}
             CarritoView()
                 .tabItem{
                     Image(systemName: "bag.fill")
-                    Text("Carrito")
+                    Text("CARRITO")
                 }
             PerfilView()
                 .tabItem{
                     Image(systemName: "person.circle")
-                        
-                    Text("Perfil")
-                        
+                    Text("PERFIL")
                 }
-          
         }
-        
         .accentColor(Color("user_C_Orange"))
-        
-                    
-            
     }
 }
 
