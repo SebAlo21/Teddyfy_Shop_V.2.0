@@ -12,8 +12,8 @@ extension TextField{
     func textFielBasic() -> some View{
         self.padding()
             .background(Color("user_C_White"))
-            .cornerRadius(16)
-            .shadow(color: .gray, radius: 0.5,x:1,y:1)
+            .cornerRadius(32)
+            .shadow(color: .gray, radius: 2,x:1,y:3)
     }
 }
 
@@ -22,8 +22,8 @@ extension SecureField{
     func secureFieldBasic() -> some View {
     self.padding()
         .background(Color("user_C_White"))
-        .cornerRadius(16)
-        .shadow(color: .gray, radius: 0.5,x:1,y:1)
+        .cornerRadius(32)
+        .shadow(color: .gray, radius: 2,x:1,y:3)
     }
 }
 
@@ -37,9 +37,10 @@ extension Rectangle{
             .foregroundStyle(Color("user_C_Black"))
     }
     func rectangleButtonOrange()-> some View{
-        self.cornerRadius(16)
-            .frame(width: 300,height: 60)
+        self.cornerRadius(32)
             .foregroundStyle(Color("user_C_Orange"))
+            .frame(width:350,height: 70)
+            .shadow(color:Color.gray, radius: 1,x:2,y:3)
     }
     
     

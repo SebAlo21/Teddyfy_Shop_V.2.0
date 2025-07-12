@@ -46,12 +46,13 @@ struct LoginView: View {
                 HStack{
                     RoundedRectangle(cornerRadius: 48)
                         .foregroundStyle(Color("user_C_White"))
-                        .frame(width: .infinity,height: 570)
+                        .frame(width:410,height: 590)
                         .overlay{
                             VStack(alignment: .center){
                                 Text("Acceder")
                                     .font(.title)
                                     .bold()
+                                    .padding()
                                 VStack(alignment: .leading){
                                     
                                     Text("Correo")
@@ -67,6 +68,7 @@ struct LoginView: View {
                                     
                                     
                                 }
+                                .padding(.horizontal,10)
                                 .padding()
                                 
                                 HStack{
@@ -91,9 +93,8 @@ struct LoginView: View {
                                     mostrarInicioView = usuarioViewModel.login(email,password,moc)
                                     usuarioActual = email
                                 },label:{
-                                    RoundedRectangle(cornerRadius: 32)
-                                        .foregroundStyle(Color("user_C_Orange"))
-                                        .frame(width:350,height: 70)
+                                   Rectangle()
+                                        .rectangleButtonOrange()
                                         .overlay(content: {
                                             Text("ENTRAR")
                                                 .tint(Color.white)
@@ -143,7 +144,7 @@ struct LoginView: View {
                         }
                         
                 }
-                .padding(.top,200)
+                .padding(.top,260)
                 
             }
             

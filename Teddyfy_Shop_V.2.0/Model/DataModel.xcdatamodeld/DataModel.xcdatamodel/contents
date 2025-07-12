@@ -34,11 +34,11 @@
     </entity>
     <entity name="DBUsuario" representedClassName="DBUsuario" syncable="YES" codeGenerationType="class">
         <attribute name="clave" optional="YES" attributeType="String"/>
-        <attribute name="correo" optional="YES" attributeType="String"/>
+        <attribute name="correo" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
         <attribute name="direccion" optional="YES" attributeType="String"/>
         <attribute name="fechaRegistro" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="nombre" optional="YES" attributeType="String"/>
+        <attribute name="nombre" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
         <attribute name="telefono" optional="YES" attributeType="String"/>
         <relationship name="toCarrito" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBCarrito" inverseName="toUsuario" inverseEntity="DBCarrito"/>
     </entity>
