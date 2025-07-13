@@ -20,7 +20,7 @@ struct InformationView: View {
     
     var body: some View {
         ZStack{
-            LinearGradient(gradient: Gradient(colors: [.userCPink,.userCWhite,.userCWhite]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(gradient: Gradient(colors: [.userCWhite,.userCPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
             VStack{
                 ScrollView{
@@ -49,13 +49,15 @@ struct InformationView: View {
                                 .image?.resizable()
                                 .scaledToFit()
                                 .frame(width: 340)
+                                .cornerRadius(32)
+                                .shadow(radius: 2,x:1,y:2)
                         }
                             
-                        Image("icon_TeddyfyText")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 250)
-                            .opacity(0.3)
+//                        Image("icon_TeddyfyText")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 250)
+//                            .opacity(0.3)
                         
                     }
                     
@@ -108,6 +110,7 @@ struct InformationView: View {
                         }
                         Text(textVision)
                             .multilineTextAlignment(.leading)
+                            .foregroundStyle(Color.gray)
                         
                         
                         

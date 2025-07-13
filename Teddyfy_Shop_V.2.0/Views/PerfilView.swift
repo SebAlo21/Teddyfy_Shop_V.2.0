@@ -39,7 +39,7 @@ struct PerfilView: View {
             VStack(){
                 //Titulo
                 HStack(){
-                    Text("MI PERFIL")
+                    Text("PERFIL")
                         .title1Black()
                     Spacer()
                 }

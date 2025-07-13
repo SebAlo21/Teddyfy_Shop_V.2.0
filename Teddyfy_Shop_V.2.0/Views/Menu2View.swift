@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct Eventos:Identifiable{
     let id = UUID()
@@ -24,7 +25,11 @@ struct Nuevos:Identifiable{
 
 
 struct Menu2View: View {
-    
+    @Environment(\.managedObjectContext) var moc
+    @StateObject var usuarioViewModel = UsuarioViewModel.shared
+    @AppStorage("usuarioActual") var usuarioActual:String = ""
+    @State var usuario: DBUsuario? = nil
+
     let listaEventos:[Eventos] = [
         Eventos(nombre: "San Valentin",imageName: "icon_valentin"),
         Eventos(nombre: "Cumpleaños",imageName: "icon_cumple"),
@@ -43,7 +48,7 @@ struct Menu2View: View {
     ]
     
     @State private var mostrarTutorial:Bool = false
-    
+    @State private var mostrarInformacion:Bool = false
     var body: some View {
       
         ZStack{
@@ -69,20 +74,25 @@ struct Menu2View: View {
                                                 })
                                             VStack(alignment:.leading){
                                                 Text("Bienvenido")
-                                                Text("Nombre de Usuario")
+                                                Text(usuario?.nombre ?? "Anonimo")
                                             }.foregroundStyle(Color("user_C_White"))
                                             
                                         }
                                         Spacer()
                                         
-                                        Circle()
-                                            .frame(width:50)
-                                            .foregroundStyle(Color.gray)
-                                            .overlay(content:{
-                                                Image(systemName: "bag")
-                                                    .renderingMode(.template)
-                                                    .foregroundStyle(Color.white)
-                                            })
+                                        Button(action:{
+                                            mostrarInformacion.toggle()
+                                        },label:{
+                                            Circle()
+                                                .frame(width:50)
+                                                .foregroundStyle(Color.gray)
+                                                .overlay(content:{
+                                                    Image(systemName: "info.circle.fill")
+                                                        .renderingMode(.template)
+                                                        .foregroundStyle(Color.white)
+                                                })
+                                        })
+                                        
                                         
                                         
                                     }
@@ -250,10 +260,12 @@ struct Menu2View: View {
                 }
             }
             .edgesIgnoringSafeArea(.all)
+            .onAppear {
+                usuario = usuarioViewModel.obtenerUsuario(usuarioActual, moc)
+            }
         }
         .sheet(isPresented: $mostrarTutorial, content: {TutorialView()})
+        .sheet(isPresented:$mostrarInformacion,content:{InformationView()})
     }
 }
-#Preview {
-    Menu2View()
-}
+

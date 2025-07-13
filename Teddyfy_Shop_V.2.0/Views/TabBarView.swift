@@ -19,7 +19,7 @@ struct TabBarView: View {
                 }
             NuevoView()
                 .tabItem{
-                    Image(systemName: "flame.fill")
+                    Image(systemName: "book.fill")
                     Text("CATALOGO")
                 }
             CarritoView()
