@@ -16,6 +16,7 @@ struct StartItem:Identifiable{
 
 
 struct Start2View: View {
+    @State private var mostrarCambioIcon:Bool = false
     @State private var mostarLoginView:Bool = false
     let items: [StartItem] = [
         StartItem(titulo:"Bienvenido ...", parrafo: "Descubre cómo dar vida a un peluche hecho a tu medida. Elige, personaliza y crea un compañero tan especial como tú.",imagen: "https://res.cloudinary.com/sasadev/image/upload/v1752119131/osocarrosel1BG_qabadd.png")
@@ -103,45 +104,27 @@ struct Start2View: View {
                 
                 
                 Spacer()
+                HStack{
+                    Button(action:{
+                        mostrarCambioIcon.toggle()
+                    },label:{
+                        Rectangle().cornerRadius(32)
+                            .frame(width:50,height: 50)
+                            .foregroundColor(.userCPink)
+                            .overlay(content: {
+                                Image(systemName: "option")
+                                    .renderingMode(.template)
+                                    .foregroundColor(.userCOrange)
+                            })
+                    })
+                    Spacer()
+                }.padding()
                 
-//                Button(action:{
-//                    //redireccion a loginView
-//                    mostarLoginView.toggle()
-//                }
-//                       ,label:{
-//                    ZStack(alignment: .center){
-//                        RoundedRectangle(cornerRadius: 48)
-//                            .foregroundStyle(Color("user_C_Pink"))
-//                            .frame(width:350,height: 100)
-//                            .shadow(color:Color(.gray),radius: 1,x:1,y:1)
-//                        ZStack(){
-//                            Text("Comienza ahora...")
-//                                .padding(.leading,60)
-//                                .bold()
-//                                .font(.title2)
-//                                .foregroundStyle(Color("user_C_Black"))
-//                            Circle()
-//                                .foregroundStyle(Color("user_C_Orange"))
-//                                .frame(width:90)
-//                                .overlay(content: {
-//                                    Image(systemName: "arrowshape.right.fill")
-//                                        .renderingMode(.template)
-//                                        .resizable()
-//                                        .scaledToFit()
-//                                        .frame(width:50)
-//                                        .foregroundStyle(Color("user_C_Black"))
-//                                })
-//                                .padding(.trailing,250)
-//                          
-//                      }
-//                    }
-//                    
-//                })
-                
-                
+               
                 .fullScreenCover(isPresented: $mostarLoginView, content: {
                     LoginView()
                 })
+                .fullScreenCover(isPresented: $mostrarCambioIcon, content:{ IconsView()})
             }
         }
     }
