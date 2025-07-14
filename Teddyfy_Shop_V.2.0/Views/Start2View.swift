@@ -44,7 +44,9 @@ struct Start2View: View {
                         })
                 })
                 Spacer()
-                Button(action:{},label:{
+                Button(action:{
+                    mostarLoginView.toggle()
+                },label:{
                     RoundedRectangle(cornerRadius: 32)
                         .foregroundStyle(Color("user_C_White"))
                         .frame(width: 100,height: 50)
@@ -75,7 +77,20 @@ struct Start2View: View {
                                     .foregroundStyle(Color("user_C_Black"))
                                     .bold()
                                     .padding(.bottom,5)
-                                Text(item.parrafo)
+                                
+                                Rectangle()
+                                    .cornerRadius(32)
+                                    .frame(width: 350, height: 170 )
+                                    .foregroundColor(.userCPink)
+                                    .overlay(content: {
+                                        Text(item.parrafo)
+                                            .multilineTextAlignment(.center)
+                                            .foregroundStyle(Color.userCBlack)
+                                            .bold()
+                                            .padding()
+                                    })
+                                    
+                                
                             }
                             .padding()
                             .frame(width:350,height:200)
@@ -89,39 +104,41 @@ struct Start2View: View {
                 
                 Spacer()
                 
-                Button(action:{
-                    //redireccion a loginView
-                    mostarLoginView.toggle()
-                }
-                       ,label:{
-                    ZStack(alignment: .center){
-                        RoundedRectangle(cornerRadius: 48)
-                            .foregroundStyle(Color("user_C_Pink"))
-                            .frame(width:350,height: 100)
-                            .shadow(color:Color(.gray),radius: 1,x:1,y:1)
-                        ZStack(){
-                            Text("Comienza ahora...")
-                                .padding(.leading,60)
-                                .bold()
-                                .font(.title2)
-                                .foregroundStyle(Color("user_C_Black"))
-                            Circle()
-                                .foregroundStyle(Color("user_C_Orange"))
-                                .frame(width:90)
-                                .overlay(content: {
-                                    Image(systemName: "arrowshape.right.fill")
-                                        .renderingMode(.template)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width:50)
-                                        .foregroundStyle(Color("user_C_Black"))
-                                })
-                                .padding(.trailing,250)
-                          
-                      }
-                    }
-                    
-                })
+//                Button(action:{
+//                    //redireccion a loginView
+//                    mostarLoginView.toggle()
+//                }
+//                       ,label:{
+//                    ZStack(alignment: .center){
+//                        RoundedRectangle(cornerRadius: 48)
+//                            .foregroundStyle(Color("user_C_Pink"))
+//                            .frame(width:350,height: 100)
+//                            .shadow(color:Color(.gray),radius: 1,x:1,y:1)
+//                        ZStack(){
+//                            Text("Comienza ahora...")
+//                                .padding(.leading,60)
+//                                .bold()
+//                                .font(.title2)
+//                                .foregroundStyle(Color("user_C_Black"))
+//                            Circle()
+//                                .foregroundStyle(Color("user_C_Orange"))
+//                                .frame(width:90)
+//                                .overlay(content: {
+//                                    Image(systemName: "arrowshape.right.fill")
+//                                        .renderingMode(.template)
+//                                        .resizable()
+//                                        .scaledToFit()
+//                                        .frame(width:50)
+//                                        .foregroundStyle(Color("user_C_Black"))
+//                                })
+//                                .padding(.trailing,250)
+//                          
+//                      }
+//                    }
+//                    
+//                })
+                
+                
                 .fullScreenCover(isPresented: $mostarLoginView, content: {
                     LoginView()
                 })
