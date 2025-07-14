@@ -16,6 +16,10 @@ struct ProductView: View {
     let precio:Float
     let cantidad:Int
     let imageName:String
+    let color:String
+    let accesorio:String
+    let talla:String
+    
     
     var body: some View {
         RoundedRectangle(cornerRadius: 12)
@@ -48,9 +52,21 @@ struct ProductView: View {
                         }.padding(.horizontal,5)
                         Spacer()
                         VStack(alignment: .leading){
-                            Text("Informacion")
-                            Text("Nombre")
-                            Text("Detalle")
+                            HStack{
+                                Text("Color: ")
+                                    .foregroundStyle(Color.gray)
+                                Text(color)
+                            }
+                            HStack{
+                                Text("Talla: ")
+                                    .foregroundStyle(Color.gray)
+                                Text(talla)
+                            }
+                            HStack{
+                                Text("Accesorio: ")
+                                    .foregroundStyle(Color.gray)
+                                Text(accesorio)
+                            }
                         }.foregroundStyle(.gray)
                         Spacer()
                         HStack{
@@ -72,6 +88,6 @@ struct ProductView: View {
     }
 }
 
-#Preview {
-    ProductView(nombre: "Oso ", precio: 24.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png" )
-}
+//#Preview {
+//    ProductView(nombre: "Oso ", precio: 24.00, cantidad: 1, imageName: "https://res.cloudinary.com/sasadev/image/upload/v1749443279/oso_vaquero-sf_vphjt4.png" )
+//}

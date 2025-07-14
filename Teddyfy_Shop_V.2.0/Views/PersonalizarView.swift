@@ -174,7 +174,7 @@ struct PersonalizarView: View {
                                 
                                 ForEach(itemsAccesorios){ item in
                                     Button(action:{
-                                        accesorio = item.nombre
+                                        accesorio = String(item.nombre)
                                     },label:{
                                         VStack(){
                                             
@@ -211,11 +211,22 @@ struct PersonalizarView: View {
                                 .keyboardType(.default)
                                 .lineLimit(5...10)
                                 .textFieldStyle(.plain)
-                                .frame(maxWidth: .infinity, minHeight: 120)
+                                .frame(maxWidth: .infinity, minHeight:
+                                50)
                                 .background(Color.white)
                                 .cornerRadius(8)
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 3))
-                            
+                                
+                            Divider()
+                            //Detalles
+                            HStack{
+                            Text(color)
+                                Spacer()
+                                Text(talla)
+                                Spacer()
+                                Text(accesorio)
+                            }.foregroundStyle(Color.gray)
+                                .bold()
                             
                         }.padding(.horizontal,30)
                             .padding(.vertical,7)

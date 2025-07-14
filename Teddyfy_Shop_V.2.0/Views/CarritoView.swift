@@ -54,7 +54,7 @@ struct CarritoView: View {
                             
                             ForEach(items){itemcarrito in
                                 
-                                ProductView(nombre: itemcarrito.toProducto?.nombre ?? "", precio: itemcarrito.toProducto?.precioBase ?? 0.0, cantidad:Int( itemcarrito.cantidad), imageName: itemcarrito.toProducto?.imagenURL ?? "").contextMenu(ContextMenu(menuItems: {
+                                ProductView(nombre: itemcarrito.toProducto?.nombre ?? "", precio: itemcarrito.toProducto?.precioBase ?? 0.0, cantidad:Int( itemcarrito.cantidad), imageName: itemcarrito.toProducto?.imagenURL ?? "",color:itemcarrito.toPersonalizacion?.color ?? "" ,accesorio:itemcarrito.toPersonalizacion?.accesorio ?? "",talla:itemcarrito.toPersonalizacion?.talla ?? "").contextMenu(ContextMenu(menuItems: {
                                     Button(action:{
                                         carritoActual?.removeFromToItemCarrito(itemcarrito)
                                         cargarData(usuarioActual)
