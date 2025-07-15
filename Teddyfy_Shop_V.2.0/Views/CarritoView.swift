@@ -25,7 +25,7 @@ struct CarritoView: View {
     
     @State var envio:Double = 0
     @State var descuento:Double = 0
-    @State var subtotal:Double = 0
+    @State var subtotal:Float = 0
     @State private var codigo:String = ""
     
    
@@ -90,20 +90,7 @@ struct CarritoView: View {
                             }
                     }
                     VStack{
-                        //Envio
-                        HStack{
-                            Text("Envio")
-                                .bold()
-                            Spacer()
-                            Text("S/ \(String(format:"%.2f",envio))")
-                        }
-                        //Descuento
-                        HStack{
-                            Text("Descuento")
-                                .bold()
-                            Spacer()
-                            Text("S/ \(String(format:"%.2f",descuento))")
-                        }
+                      
                         //Subtotal
                         HStack{
                             Text("Subtotal")
@@ -157,8 +144,18 @@ struct CarritoView: View {
                 self.carritoActual = carrito
                 self.items =  carrito.itemCarritoArray
                 
+                var total:Float = 0
+                
+                for item in items{
+                    total = total + (item.toProducto?.precioBase ?? 0)
+                }
+                
+                subtotal = total
+                
+                }
+                
             }
-        }
-        
-    }
+    
+         }
+    
 
